@@ -9,19 +9,15 @@ public class Car {
     private final String name;
     private int location;
     
-    public Car(Car car) {
-        this(car.name, car.location);
-    }
-    public Car(String name, int location) {
-        this(name);
-        this.location = location;
-    }
-
     public Car(String name) {
+        this(name, INIT_LOCATION);
+    }
+    
+    public Car(String name, int location) {
         validate(name);
         this.name = name;
-        this.location = INIT_LOCATION;
-    }    
+        this.location = location;
+    }
 
     public int forward(int randomNum) {
         if (randomNum > CAR_FORWARD_CRITERIA) {
