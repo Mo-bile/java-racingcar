@@ -1,8 +1,8 @@
 package racinggame.response;
 
 import racinggame.model.GameResult;
-import racinggame.model.JoinCars;
+import racinggame.model.WinnerCars;
 
-public record GameResponse(GameResult gameResult, JoinCars winners) {
+public record GameResponse(GameResult gameResult, WinnerCars winners) {
 
 }

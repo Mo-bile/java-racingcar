@@ -34,7 +34,7 @@ class GameResultTest {
         GameResult gameResult = new GameResult(progressRecords);
         
         List<Car> expectWinnerCars = List.of(new Car("pobi",5), new Car("crong",5));
-        JoinCars winner = new JoinCars(expectWinnerCars);
+        WinnerCars winner = new WinnerCars(expectWinnerCars);
         
         assertThat(gameResult.findGameWinners()).isEqualTo(winner);
     }
@@ -52,7 +52,7 @@ class GameResultTest {
         GameResult gameResult = new GameResult(progressRecords);
         
         List<Car> expectWinnerCars = List.of(new Car("crong",5));
-        JoinCars winner = new JoinCars(expectWinnerCars);
+        WinnerCars winner = new WinnerCars(expectWinnerCars);
         
         assertThat(gameResult.findGameWinners()).isEqualTo(winner);
     }
