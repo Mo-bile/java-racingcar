@@ -3,6 +3,7 @@ package racinggame.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import racinggame.util.RandomUtil;
 
 public record JoinCars(List<Car> cars) {
     
@@ -20,6 +21,13 @@ public record JoinCars(List<Car> cars) {
     
     public JoinCars findWinners() {
         return findMaxCar(findMaxLocation());
+    }
+    
+    public void race(List<ProgressRecord> progressRecords) {
+        for(Car car: this.cars()) {
+            car.forward(RandomUtil.generateInt());
+        }
+        progressRecords.add(new ProgressRecord(this));
     }
     
     private int findMaxLocation() {
