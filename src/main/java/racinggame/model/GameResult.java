@@ -9,8 +9,5 @@ public record GameResult(List<ProgressRecord> progressRecords) {
     public GameResult(List<ProgressRecord> progressRecords) {
         this.progressRecords = new ArrayList<>(progressRecords);
     }
-    
-    public WinnerCars findGameWinners() {
-        return progressRecords.getLast().joinCars().findWinners();
-    }
+
 }

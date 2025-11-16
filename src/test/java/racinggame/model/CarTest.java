@@ -67,14 +67,14 @@ class CarTest {
     @Test
     void compareLocationTest() {
         String name = "mo";
-        car = new Car(name,6);
+        car = new Car(name, 6);
         assertThat(car.compareLocation(5)).isEqualTo(6);
     }
     
     @Test
     void isSameLocationTest() {
         String name = "mo";
-        car = new Car(name,5);
+        car = new Car(name, 5);
         assertThat(car.isSameLocation(5)).isTrue();
     }
     

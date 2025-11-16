@@ -10,4 +10,9 @@ public record ProgressRecord(JoinCars joinCars) {
         }
         this.joinCars = cars;
     }
+    
+    public WinnerCars findGameWinners() {
+        return this.joinCars().findWinners();
+    }
+    
 }

@@ -3,6 +3,7 @@ package racinggame.business;
 import static org.assertj.core.api.Assertions.*;
 import static racinggame.business.CarFactory.createCars;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import racinggame.model.*;
 
@@ -20,9 +21,9 @@ class GameMoveTest {
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove((new NonNegativeMoves(moveCount)));
         JoinCars cars = createCars(new NonNegativeReadyCars(strings));
-        GameResult gameResult = gameMove.moveCar(cars);
+        List<ProgressRecord> progressRecords = gameMove.moveCar(cars);
         
-        assertThat(gameResult.progressRecords())
+        assertThat(progressRecords)
             .allSatisfy(ProgressRecord::joinCars).hasSize(moveCount);
     }
     
@@ -32,9 +33,9 @@ class GameMoveTest {
         String[] strings = {"pobi", "crong","honux"};
         GameMove gameMove = new GameMove((new NonNegativeMoves(moveCount)));
         JoinCars cars = createCars(new NonNegativeReadyCars(strings));
-        GameResult gameResult = gameMove.moveCar(cars);
+        List<ProgressRecord> progressRecords = gameMove.moveCar(cars);
         
-        assertThat(gameResult.progressRecords())
+        assertThat(progressRecords)
             .allSatisfy(progressRecord ->
                 assertThat(progressRecord.joinCars().cars()).hasSize(strings.length)
         );

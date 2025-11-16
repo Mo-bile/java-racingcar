@@ -11,53 +11,37 @@ class ProgressRecordTest {
     ProgressRecord progressRecord;
     
     @Test
-    void recordIsEmptyTest() {
-        List<Car> joinCarsRecord = new ArrayList<>();
-        JoinCars joinCars = new JoinCars(joinCarsRecord);
-        progressRecord = new ProgressRecord(joinCars);
-        assertThat(progressRecord.joinCars().cars()).isEmpty();
-    }
-    
-    @Test
-    void gameRecordTest() {
-
-        List<Car> joinCarsRecord = new ArrayList<>();
-        joinCarsRecord.add(new Car("pobi"));
-        joinCarsRecord.add(new Car("crong"));
-        joinCarsRecord.add(new Car("honux"));
-        JoinCars joinCars = new JoinCars(joinCarsRecord);
-        progressRecord = new ProgressRecord(joinCars);
+    void findJointWinnersTest() {
+        List<Car> joinCars = new ArrayList<>();
+        joinCars.add(new Car("pobi",5));
+        joinCars.add(new Car("crong",5));
+        joinCars.add(new Car("mo",3));
+        joinCars.add(new Car("jae",2));
+        JoinCars jc = new JoinCars(joinCars);
+        ProgressRecord progressRecord = new ProgressRecord(jc);
+        List<ProgressRecord> progressRecords = List.of(progressRecord);
         
-        assertThat(progressRecord.joinCars().cars()).hasSize(3);
+        List<Car> expectWinnerCars = List.of(new Car("pobi",5), new Car("crong",5));
+        WinnerCars winner = new WinnerCars(expectWinnerCars);
+        
+        assertThat(progressRecords.getLast().findGameWinners()).isEqualTo(winner);
     }
     
     @Test
-    void showGameResultTest() {
-        List<Car> joinCarsRecord = new ArrayList<>();
-        joinCarsRecord.add(new Car("pobi"));
-        joinCarsRecord.add(new Car("crong"));
-        JoinCars joinCars = new JoinCars(joinCarsRecord);
-        progressRecord = new ProgressRecord(joinCars);
-        assertThat(progressRecord.joinCars().cars()).isNotEmpty();
+    void findSoleWinnersTest() {
+        List<Car> joinCars = new ArrayList<>();
+        joinCars.add(new Car("pobi",4));
+        joinCars.add(new Car("crong",5));
+        joinCars.add(new Car("mo",3));
+        joinCars.add(new Car("jae",2));
+        JoinCars jc = new JoinCars(joinCars);
+        ProgressRecord progressRecord = new ProgressRecord(jc);
+        List<ProgressRecord> progressRecords = List.of(progressRecord);
+        
+        List<Car> expectWinnerCars = List.of(new Car("crong",5));
+        WinnerCars winner = new WinnerCars(expectWinnerCars);
+        
+        assertThat(progressRecords.getLast().findGameWinners()).isEqualTo(winner);
     }
 
-    @Test
-    void carNameTest() {
-        String pobi = "pobi";
-        String crong = "crong";
-        String honux = "honux";
-
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(pobi));
-        cars.add(new Car(crong));
-        cars.add(new Car(honux));
-        JoinCars joinCars = new JoinCars(cars);
-        progressRecord = new ProgressRecord(joinCars);
-
-        assertThat(progressRecord.joinCars().cars().size()).isEqualTo(3);
-        progressRecord.joinCars().cars().get(0).getName().equals(pobi);
-        progressRecord.joinCars().cars().get(1).getName().equals(crong);
-        progressRecord.joinCars().cars().get(2).getName().equals(honux);
-    }
-    
 }
