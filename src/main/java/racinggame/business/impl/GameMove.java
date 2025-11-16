@@ -1,11 +1,12 @@
-package racinggame.business;
+package racinggame.business.impl;
 
+import racinggame.business.Move;
 import racinggame.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public record GameMove(int moves) {
+public record GameMove(int moves) implements Move {
     
     public GameMove {
         validate(moves);

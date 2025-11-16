@@ -5,8 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racinggame.business.impl.TestProcess;
+import racinggame.model.JoinCars;
 import racinggame.response.GameResponse;
-import racinggame.model.GameResult;
 
 class ProcessTest {
     
@@ -14,29 +15,27 @@ class ProcessTest {
     
     @BeforeEach
     void setUp() {
-        gp = new Process();
+        gp = new TestProcess();
     }
     
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong:5", "pobi,crong:6"}, delimiter = ':')
-    void carsMoveCountTest(String names, int moves) {
+    void carsWinnerTest(String names, int moves) {
         String[] carsNames = names.split(",");
         GameResponse gameResponse =  gp.run(carsNames, moves);
-        GameResult gamedResult = gameResponse.gameResult();
         
-        assertThat(gamedResult.progressRecords()).hasSize(moves);
+        String carsName = carsNames[carsNames.length - 1];
+        assertThat(gameResponse.winners().cars().getLast().getName()).isEqualTo(carsName);
     }
     
     @ParameterizedTest
     @CsvSource(value = {"pobi,crong:5", "pobi,crong:6"}, delimiter = ':')
-    void carsCountTest(String names, int moves) {
+    void gameRespTest(String names, int moves) {
         String[] carsNames = names.split(",");
         GameResponse gameResponse =  gp.run(carsNames, moves);
-        GameResult gamedResult = gameResponse.gameResult();
         
-        assertThat(gamedResult.progressRecords())
-            .allSatisfy(progressRecord ->
-                assertThat(progressRecord.joinCars().cars()).hasSize(carsNames.length)
-            );
+        JoinCars joinCars = gameResponse.gameResult().progressRecords().getLast().joinCars();
+        assertThat(joinCars.cars().getFirst().findLocation()).isEqualTo(0);
+        assertThat(joinCars.cars().getLast().findLocation()).isEqualTo(moves);
     }
 }

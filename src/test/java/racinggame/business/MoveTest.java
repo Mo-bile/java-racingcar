@@ -7,9 +7,11 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racinggame.business.impl.GameMove;
+import racinggame.business.impl.TestMove;
 import racinggame.model.*;
 
-class GameMoveTest {
+class MoveTest {
     
     @ParameterizedTest
     @ValueSource(ints = {0, -1})
@@ -29,9 +31,9 @@ class GameMoveTest {
     void moveCountTest() {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
-        GameMove gameMove = new GameMove((moveCount));
+        Move move = new GameMove((moveCount));
         JoinCars cars = createCars(strings);
-        List<ProgressRecord> progressRecords = gameMove.moveCar(cars);
+        List<ProgressRecord> progressRecords = move.moveCar(cars);
         
         assertThat(progressRecords)
             .allSatisfy(ProgressRecord::joinCars).hasSize(moveCount);
@@ -41,9 +43,9 @@ class GameMoveTest {
     void CarCountTest() {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
-        GameMove gameMove = new GameMove((moveCount));
+        Move move = new GameMove((moveCount));
         JoinCars cars = createCars(strings);
-        List<ProgressRecord> progressRecords = gameMove.moveCar(cars);
+        List<ProgressRecord> progressRecords = move.moveCar(cars);
         
         assertThat(progressRecords)
             .allSatisfy(progressRecord ->
@@ -51,4 +53,15 @@ class GameMoveTest {
         );
     }
 
+        @Test
+    void testMoveTest() {
+        int moveCount = 5;
+        String[] strings = {"pobi", "crong","honux"};
+        Move move = new TestMove((moveCount));
+        JoinCars cars = createCars(strings);
+        List<ProgressRecord> progressRecords = move.moveCar(cars);
+        
+        assertThat(progressRecords.getLast().joinCars().cars().getLast().findLocation())
+            .isEqualTo(moveCount);
+    }
 }
