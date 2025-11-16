@@ -17,12 +17,9 @@ class ProgressRecordTest {
         joinCars.add(new Car("crong",5));
         joinCars.add(new Car("mo",3));
         joinCars.add(new Car("jae",2));
-        JoinCars jc = new JoinCars(joinCars);
-        ProgressRecord progressRecord = new ProgressRecord(jc);
-        List<ProgressRecord> progressRecords = List.of(progressRecord);
+        List<ProgressRecord> progressRecords = List.of(new ProgressRecord(new JoinCars(joinCars)));
         
-        List<Car> expectWinnerCars = List.of(new Car("pobi",5), new Car("crong",5));
-        WinnerCars winner = new WinnerCars(expectWinnerCars);
+        WinnerCars winner = new WinnerCars(List.of(new Car("pobi",5), new Car("crong",5)));
         
         assertThat(progressRecords.getLast().findGameWinners()).isEqualTo(winner);
     }
@@ -34,12 +31,9 @@ class ProgressRecordTest {
         joinCars.add(new Car("crong",5));
         joinCars.add(new Car("mo",3));
         joinCars.add(new Car("jae",2));
-        JoinCars jc = new JoinCars(joinCars);
-        ProgressRecord progressRecord = new ProgressRecord(jc);
-        List<ProgressRecord> progressRecords = List.of(progressRecord);
+        List<ProgressRecord> progressRecords = List.of(new ProgressRecord(new JoinCars(joinCars)));
         
-        List<Car> expectWinnerCars = List.of(new Car("crong",5));
-        WinnerCars winner = new WinnerCars(expectWinnerCars);
+        WinnerCars winner = new WinnerCars(List.of(new Car("crong",5)));
         
         assertThat(progressRecords.getLast().findGameWinners()).isEqualTo(winner);
     }

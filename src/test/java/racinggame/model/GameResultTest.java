@@ -12,11 +12,8 @@ class GameResultTest {
     
     @Test
     void getGameResultTest() {
-        List<Car> cars = new ArrayList<>();
-        JoinCars joinCars = new JoinCars(cars);
-        
         List<ProgressRecord> progressRecords = new ArrayList<>();
-        progressRecords.add(new ProgressRecord(joinCars));
+        progressRecords.add(new ProgressRecord(new JoinCars(new ArrayList<>())));
         gameResult = new GameResult(progressRecords);
         assertThat(gameResult.progressRecords().size()).isEqualTo(1);
     }

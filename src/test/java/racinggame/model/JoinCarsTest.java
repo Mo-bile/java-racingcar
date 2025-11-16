@@ -11,12 +11,10 @@ class JoinCarsTest {
     
     @Test
     void addJoinCarsTest() {
-        List<Car> cars = List.of(new Car("pobi"));
-        JoinCars joinCars = new JoinCars(cars);
+        JoinCars joinCars = new JoinCars(List.of(new Car("pobi")));
         joinCars.addJoinCars(new Car("mo"));
         
-        List<Car> expectedCars = List.of(new Car("pobi"),new Car("mo"));
-        JoinCars expectedJoinCars = new JoinCars(expectedCars);
+        JoinCars expectedJoinCars = new JoinCars(List.of(new Car("pobi"),new Car("mo")));
         
         assertThat(joinCars).isEqualTo(expectedJoinCars);
     }
@@ -31,8 +29,7 @@ class JoinCarsTest {
         joinCars.add(new Car("jae",2));
         JoinCars jc = new JoinCars(joinCars);
         
-        List<Car> expectWinnerCars = List.of(new Car("pobi",5), new Car("crong",5));
-        WinnerCars expectedWc = new WinnerCars(expectWinnerCars);
+        WinnerCars expectedWc = new WinnerCars(List.of(new Car("pobi",5), new Car("crong",5)));
         assertThat(jc.findWinners()).isEqualTo(expectedWc);
     }
     
@@ -45,8 +42,7 @@ class JoinCarsTest {
         joinCars.add(new Car("jae",2));
         JoinCars jc = new JoinCars(joinCars);
         
-        List<Car> expectWinnerCars = List.of(new Car("crong",5));
-        WinnerCars expectedJc = new WinnerCars(expectWinnerCars);
+        WinnerCars expectedJc = new WinnerCars(List.of(new Car("crong",5)));
         assertThat(jc.findWinners()).isEqualTo(expectedJc);
     }
     
