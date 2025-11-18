@@ -1,4 +1,4 @@
-package racingGame.util;
+package racinggame.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
