@@ -3,6 +3,8 @@ package racinggame.response;
 import racinggame.model.GameResult;
 import racinggame.model.WinnerCars;
 
-public record GameResponse(GameResult gameResult, WinnerCars winners) {
+import java.util.List;
+
+public record GameResponse(GameResult gameResult, List<String> winners) {
 
 }

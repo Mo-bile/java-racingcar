@@ -15,6 +15,6 @@ public class TestProcess implements Process {
         JoinCars joinCars = CarFactory.createCars(names);
         List<ProgressRecord> progressRecords = new TestMove(moves).moveCar(joinCars);
         WinnerCars gameWinners = progressRecords.getLast().findGameWinners();
-        return new GameResponse(new GameResult(progressRecords), gameWinners);
+        return new GameResponse(new GameResult(progressRecords), gameWinners.WinnerCarsName());
     }
 }

@@ -17,13 +17,13 @@ public class ResultView {
             }
             System.out.println();
         }
-        winnersPrint(results.winners().cars());
+        winnersPrint(results.winners());
     }
     
-    private static void winnersPrint(List<Car> winners) {
+    private static void winnersPrint(List<String> winners) {
         List<String> carsName = new ArrayList<>();
-        for(Car winner: winners) {
-            carsName.add(winner.getName());
+        for(String winner: winners) {
+            carsName.add(winner);
         }
         System.out.print(String.join(",", carsName));
         System.out.print("가 최종 우승했습니다.");
