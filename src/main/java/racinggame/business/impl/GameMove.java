@@ -12,12 +12,12 @@ public record GameMove(int moves) implements Move {
         validate(moves);
     }
     
-    public List<ProgressRecord> moveCar(JoinCars joinCars) {
+    public GameResult moveCar(JoinCars joinCars) {
         List<ProgressRecord> progressRecords = new ArrayList<>();
         for(int i = 0; i < this.moves; i++) {
             progressRecords.add(joinCars.race());
         }
-        return progressRecords;
+        return new GameResult(progressRecords);
     }
     
     private void validate(int moves) {
@@ -25,6 +25,5 @@ public record GameMove(int moves) implements Move {
             throw new IllegalArgumentException("이동횟수에 입력이 생략되거나, 0이하");
         }
     }
-    
-    
+
 }

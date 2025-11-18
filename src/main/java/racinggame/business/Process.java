@@ -1,6 +1,5 @@
 package racinggame.business;
 
-import java.util.List;
 import racinggame.model.*;
 import racinggame.response.GameResponse;
 
@@ -16,8 +15,8 @@ public class Process {
 
     public GameResponse run() {
         JoinCars joinCars = CarFactory.createCars(names);
-        List<ProgressRecord> progressRecords = move.moveCar(joinCars);
-        WinnerCars gameWinners = progressRecords.getLast().findGameWinners();
-        return new GameResponse(new GameResult(progressRecords), gameWinners.WinnerCarsName());
+        GameResult gameResult = move.moveCar(joinCars);
+        WinnerCars gameWinners = gameResult.findLastRaceRecord().findGameWinners();
+        return new GameResponse(gameResult, gameWinners.WinnerCarsName());
     }
 }

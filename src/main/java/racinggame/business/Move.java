@@ -1,9 +1,11 @@
 package racinggame.business;
 
 import java.util.List;
+
+import racinggame.model.GameResult;
 import racinggame.model.JoinCars;
 import racinggame.model.ProgressRecord;
 
 public interface Move {
-    public List<ProgressRecord> moveCar(JoinCars joinCars);
+    public GameResult moveCar(JoinCars joinCars);
 }

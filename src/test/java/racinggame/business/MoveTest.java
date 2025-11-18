@@ -3,7 +3,6 @@ package racinggame.business;
 import static org.assertj.core.api.Assertions.*;
 import static racinggame.business.CarFactory.createCars;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -33,9 +32,9 @@ class MoveTest {
         String[] strings = {"pobi", "crong","honux"};
         Move move = new GameMove(moveCount);
         JoinCars cars = createCars(strings);
-        List<ProgressRecord> progressRecords = move.moveCar(cars);
-        
-        assertThat(progressRecords)
+        GameResult gameResult = move.moveCar(cars);
+
+        assertThat(gameResult.progressRecords())
             .allSatisfy(ProgressRecord::cars).hasSize(moveCount);
     }
     
@@ -45,9 +44,9 @@ class MoveTest {
         String[] strings = {"pobi", "crong","honux"};
         Move move = new GameMove(moveCount);
         JoinCars cars = createCars(strings);
-        List<ProgressRecord> progressRecords = move.moveCar(cars);
-        
-        assertThat(progressRecords)
+        GameResult gameResult = move.moveCar(cars);
+
+        assertThat(gameResult.progressRecords())
             .allSatisfy(progressRecord ->
                 assertThat(progressRecord.cars()).hasSize(strings.length)
         );
@@ -59,10 +58,9 @@ class MoveTest {
         String[] strings = {"pobi", "crong","honux"};
         Move move = new TestMove(moveCount);
         JoinCars cars = createCars(strings);
-        List<ProgressRecord> progressRecords = move.moveCar(cars);
+        GameResult gameResult = move.moveCar(cars);
 
-        // 마지막 경기의 것을 뽑아내는?
-        assertThat(progressRecords.getLast().cars().getLast().findLocation())
+        assertThat(gameResult.findLastRaceRecord().cars().getLast().findLocation())
             .isEqualTo(moveCount);
     }
 }
