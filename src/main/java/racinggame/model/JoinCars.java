@@ -23,11 +23,11 @@ public record JoinCars(List<Car> cars) {
         return findMaxCar(findMaxLocation());
     }
     
-    public void race(List<ProgressRecord> progressRecords) {
+    public ProgressRecord race() {
         for(Car car: this.cars()) {
             car.forward(RandomUtil.generateInt());
         }
-        progressRecords.add(new ProgressRecord(this));
+        return new ProgressRecord(this);
     }
     
     private int findMaxLocation() {

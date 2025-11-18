@@ -15,7 +15,7 @@ public record GameMove(int moves) implements Move {
     public List<ProgressRecord> moveCar(JoinCars joinCars) {
         List<ProgressRecord> progressRecords = new ArrayList<>();
         for(int i = 0; i < this.moves; i++) {
-            joinCars.race(progressRecords);
+            progressRecords.add(joinCars.race());
         }
         return progressRecords;
     }
