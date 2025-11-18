@@ -10,7 +10,7 @@ class CarFactoryTest {
 
     @Test
     void carMakeTest() {
-        String[] strings = {"pobi", "crong","honux"};
+        String[] strings = {"pobi", "crong", "honux"};
         assertThat(createCars(strings).cars()).hasSize(strings.length);
     }
     

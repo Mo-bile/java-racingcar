@@ -19,7 +19,7 @@ class ProgressRecordTest {
         joinCars.add(new Car("jae",2));
         List<ProgressRecord> progressRecords = List.of((new JoinCars(joinCars).toProcessRecord()));
         
-        WinnerCars winner = new WinnerCars(List.of(new Car("pobi",5), new Car("crong",5)));
+        WinnerCars winner = new WinnerCars(List.of(new Car("pobi", 5), new Car("crong", 5)));
         
         assertThat(progressRecords.getLast().findGameWinners()).isEqualTo(winner);
     }
@@ -33,7 +33,7 @@ class ProgressRecordTest {
         joinCars.add(new Car("jae",2));
         List<ProgressRecord> progressRecords = List.of((new JoinCars(joinCars).toProcessRecord()));
         
-        WinnerCars winner = new WinnerCars(List.of(new Car("crong",5)));
+        WinnerCars winner = new WinnerCars(List.of(new Car("crong", 5)));
         
         assertThat(progressRecords.getLast().findGameWinners()).isEqualTo(winner);
     }
