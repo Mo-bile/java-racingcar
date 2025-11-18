@@ -19,35 +19,21 @@ public record JoinCars(List<Car> cars) {
         this.cars.add(car);
     }
     
-    public WinnerCars findWinners() {
-        return findMaxCar(findMaxLocation());
-    }
-    
     public ProgressRecord race() {
         for(Car car: this.cars()) {
             car.forward(RandomUtil.generateInt());
         }
-        return new ProgressRecord(this);
+        return toProcessRecord();
     }
-    
-    private int findMaxLocation() {
-        int max = Integer.MIN_VALUE;
-        for(Car joinCar: this.cars) {
-            max = joinCar.compareLocation(max);
+
+    ProgressRecord toProcessRecord() {
+        List<Car> carRecord = new ArrayList<>();
+        for (Car car : this.cars) {
+            carRecord.add(new Car(car.getName(), car.findLocation()));
         }
-        return max;
+        return new ProgressRecord(carRecord);
     }
-    
-    private WinnerCars findMaxCar(int max) {
-        List<Car> winnerCars = new ArrayList<>();
-        for(Car joinCar: this.cars) {
-            if(joinCar.isSameLocation(max)) {
-                winnerCars.add(joinCar);
-            }
-        }
-        return new WinnerCars(winnerCars);
-    }
-    
+
     @Override
     public boolean equals(Object o) {
         if(o == null || getClass() != o.getClass()) {

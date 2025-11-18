@@ -13,7 +13,7 @@ class GameResultTest {
     @Test
     void getGameResultTest() {
         List<ProgressRecord> progressRecords = new ArrayList<>();
-        progressRecords.add(new ProgressRecord(new JoinCars(new ArrayList<>())));
+        progressRecords.add(new JoinCars(new ArrayList<>()).toProcessRecord());
         gameResult = new GameResult(progressRecords);
         assertThat(gameResult.progressRecords().size()).isEqualTo(1);
     }

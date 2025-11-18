@@ -1,18 +1,29 @@
 package racinggame.model;
 
-public record ProgressRecord(JoinCars joinCars) {
-    
-    // ? 깊은 복사가 필요하게된 원인을 사전에 포착하기 위한 테스트 방법은?
-    public ProgressRecord(JoinCars joinCars) {
-        JoinCars cars = new JoinCars();
-        for(Car joinCar: joinCars.cars()) {
-            cars.addJoinCars(new Car(joinCar.getName(), joinCar.findLocation()));
-        }
-        this.joinCars = cars;
-    }
-    
+import java.util.ArrayList;
+import java.util.List;
+
+public record ProgressRecord(List<Car> cars) {
+
     public WinnerCars findGameWinners() {
-        return this.joinCars().findWinners();
+        return findMaxCar(findMaxLocation());
     }
-    
+
+    private int findMaxLocation() {
+        int max = Integer.MIN_VALUE;
+        for(Car joinCar: this.cars) {
+            max = joinCar.compareLocation(max);
+        }
+        return max;
+    }
+
+    private WinnerCars findMaxCar(int max) {
+        List<Car> winnerCars = new ArrayList<>();
+        for(Car joinCar: this.cars) {
+            if(joinCar.isSameLocation(max)) {
+                winnerCars.add(joinCar);
+            }
+        }
+        return new WinnerCars(winnerCars);
+    }
 }

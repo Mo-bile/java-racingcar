@@ -6,8 +6,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import racinggame.business.impl.TestProcess;
+import racinggame.model.Car;
 import racinggame.model.JoinCars;
 import racinggame.response.GameResponse;
+
+import java.util.List;
 
 class ProcessTest {
     
@@ -34,8 +37,8 @@ class ProcessTest {
         String[] carsNames = names.split(",");
         GameResponse gameResponse =  gp.run(carsNames, moves);
         
-        JoinCars joinCars = gameResponse.gameResult().progressRecords().getLast().joinCars();
-        assertThat(joinCars.cars().getFirst().findLocation()).isEqualTo(0);
-        assertThat(joinCars.cars().getLast().findLocation()).isEqualTo(moves);
+        List<Car> joinCars = gameResponse.gameResult().progressRecords().getLast().cars();
+        assertThat(joinCars.getFirst().findLocation()).isEqualTo(0);
+        assertThat(joinCars.getLast().findLocation()).isEqualTo(moves);
     }
 }

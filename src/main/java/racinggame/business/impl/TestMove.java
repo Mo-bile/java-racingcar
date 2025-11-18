@@ -17,7 +17,7 @@ public record TestMove(int moves) implements Move {
         for(int i = 0; i < this.moves; i++) {
             joinCars.cars().getLast().forward(4);
         }
-        progressRecords.add(new ProgressRecord(joinCars));
+        progressRecords.add(new ProgressRecord(joinCars.cars()));
         return progressRecords;
     }
     

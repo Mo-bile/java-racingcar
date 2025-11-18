@@ -36,7 +36,7 @@ class MoveTest {
         List<ProgressRecord> progressRecords = move.moveCar(cars);
         
         assertThat(progressRecords)
-            .allSatisfy(ProgressRecord::joinCars).hasSize(moveCount);
+            .allSatisfy(ProgressRecord::cars).hasSize(moveCount);
     }
     
     @Test
@@ -49,7 +49,7 @@ class MoveTest {
         
         assertThat(progressRecords)
             .allSatisfy(progressRecord ->
-                assertThat(progressRecord.joinCars().cars()).hasSize(strings.length)
+                assertThat(progressRecord.cars()).hasSize(strings.length)
         );
     }
 
@@ -61,7 +61,7 @@ class MoveTest {
         JoinCars cars = createCars(strings);
         List<ProgressRecord> progressRecords = move.moveCar(cars);
         
-        assertThat(progressRecords.getLast().joinCars().cars().getLast().findLocation())
+        assertThat(progressRecords.getLast().cars().getLast().findLocation())
             .isEqualTo(moveCount);
     }
 }
