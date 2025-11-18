@@ -26,7 +26,7 @@ public record JoinCars(List<Car> cars) {
         return toProcessRecord();
     }
 
-    ProgressRecord toProcessRecord() {
+    public ProgressRecord toProcessRecord() {
         List<Car> carRecord = new ArrayList<>();
         for (Car car : this.cars) {
             carRecord.add(new Car(car.getName(), car.findLocation()));

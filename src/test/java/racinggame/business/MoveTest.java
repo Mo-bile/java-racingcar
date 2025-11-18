@@ -31,7 +31,7 @@ class MoveTest {
     void moveCountTest() {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
-        Move move = new GameMove((moveCount));
+        Move move = new GameMove(moveCount);
         JoinCars cars = createCars(strings);
         List<ProgressRecord> progressRecords = move.moveCar(cars);
         
@@ -43,7 +43,7 @@ class MoveTest {
     void CarCountTest() {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
-        Move move = new GameMove((moveCount));
+        Move move = new GameMove(moveCount);
         JoinCars cars = createCars(strings);
         List<ProgressRecord> progressRecords = move.moveCar(cars);
         
@@ -57,10 +57,11 @@ class MoveTest {
     void testMoveTest() {
         int moveCount = 5;
         String[] strings = {"pobi", "crong","honux"};
-        Move move = new TestMove((moveCount));
+        Move move = new TestMove(moveCount);
         JoinCars cars = createCars(strings);
         List<ProgressRecord> progressRecords = move.moveCar(cars);
-        
+
+        // 마지막 경기의 것을 뽑아내는?
         assertThat(progressRecords.getLast().cars().getLast().findLocation())
             .isEqualTo(moveCount);
     }
