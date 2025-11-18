@@ -16,7 +16,6 @@ public class Process {
     public GameResponse run() {
         JoinCars joinCars = CarFactory.createCars(names);
         GameResult gameResult = move.moveCar(joinCars);
-        WinnerCars gameWinners = gameResult.findLastRaceRecord().findGameWinners();
-        return new GameResponse(gameResult, gameWinners.WinnerCarsName());
+        return new GameResponse(gameResult, gameResult.findLastRaceRecord().findGameWinners().WinnerCarsName());
     }
 }

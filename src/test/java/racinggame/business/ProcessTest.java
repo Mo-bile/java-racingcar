@@ -28,7 +28,7 @@ class ProcessTest {
         String[] carsNames = names.split(",");
         GameResponse gameResponse = new Process(new TestMove(moves), carsNames).run();
 
-        List<Car> joinCars = gameResponse.gameResult().progressRecords().getLast().cars();
+        List<Car> joinCars = gameResponse.gameResult().findLastRaceRecord().cars();;
         assertThat(joinCars.getFirst().findLocation()).isEqualTo(0);
         assertThat(joinCars.getLast().findLocation()).isEqualTo(moves);
     }
