@@ -2,11 +2,6 @@ package racinggame.domain.model;
 
 import java.util.List;
 
-public class RacingResult {
+public record RacingResult(List<Car> cars) {
     
-    private List<Car> cars;
-    
-    public RacingResult(List<Car> cars) {
-        this.cars = cars;
-    }
 }
