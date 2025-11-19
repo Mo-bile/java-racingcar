@@ -20,7 +20,6 @@ class RacingGameTest {
     void 차들을_레이스에_출전시킨_후_결과를_받는다() {
         RacingGame racingGame = new RacingGame("mo,jae");
         RacingResult result = racingGame.race();
-        
         assertThat(result).isNotNull();
     }
     

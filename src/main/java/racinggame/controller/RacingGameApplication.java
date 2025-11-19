@@ -18,7 +18,7 @@ public class RacingGameApplication {
             result = racingGame.race();
             ResultView.printAllResult(result);
         }
-        
+        ResultView.winnersPrint(result);
     }
     
 }
