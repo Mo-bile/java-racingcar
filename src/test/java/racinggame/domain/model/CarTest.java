@@ -9,7 +9,7 @@ class CarTest {
     @Test
     void 차는_앞으로_이동한다() {
         Car car = new Car("mo",5);
-        car.race();
+        car.race(4);
         
         assertThat(car.findLocation()).isEqualTo(6);
     }
