@@ -23,11 +23,15 @@ public class RacingGame {
     }
     
     public RacingResult race() {
+        carsRace();
+        this.raceCount --;
+        return new RacingResult(this.cars);
+    }
+    
+    private void carsRace() {
         for(Car car: this.cars) {
             car.race(generateInt());
         }
-        this.raceCount --;
-        return new RacingResult(this.cars);
     }
     
     public boolean isEnd(){
