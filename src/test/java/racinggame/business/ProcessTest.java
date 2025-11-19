@@ -19,7 +19,7 @@ class ProcessTest {
         GameResponse gameResponse = new Process(new TestMove(moves), carsNames).run();
 
         String carsName = carsNames[carsNames.length - 1];
-        assertThat(gameResponse.winners().getLast()).isEqualTo(carsName);
+        assertThat(gameResponse.gameResult().findLastRaceRecord().findGameWinners().winnerCarsName().getLast()).isEqualTo(carsName);
     }
     
     @ParameterizedTest

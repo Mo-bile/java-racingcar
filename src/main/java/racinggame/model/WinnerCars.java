@@ -10,7 +10,7 @@ public record WinnerCars(List<Car> cars) {
         this.cars = new ArrayList<>(cars);
     }
 
-    public List<String> WinnerCarsName() {
+    public List<String> winnerCarsName() {
         List<String> carsName = new ArrayList<>();
         for (Car car : cars) {
             carsName.add(car.getName());

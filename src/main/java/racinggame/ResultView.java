@@ -3,6 +3,7 @@ package racinggame;
 import java.util.ArrayList;
 import java.util.List;
 import racinggame.model.Car;
+import racinggame.model.GameResult;
 import racinggame.response.GameResponse;
 import racinggame.model.ProgressRecord;
 
@@ -17,7 +18,9 @@ public class ResultView {
             }
             System.out.println();
         }
-        winnersPrint(results.winners());
+        GameResult gameResult = results.gameResult();
+        ProgressRecord lastRaceRecord = gameResult.findLastRaceRecord();
+        winnersPrint(lastRaceRecord.findGameWinners().winnerCarsName());
     }
     
     private static void winnersPrint(List<String> winners) {
