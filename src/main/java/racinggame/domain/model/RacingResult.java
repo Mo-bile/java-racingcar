@@ -12,17 +12,18 @@ public record RacingResult(List<Car> cars) {
     private int findMaxNum() {
         int max = 0;
         for(Car car: cars) {
-            if(car.findLocation() > max) {
+            if(car.isMaxNum(max)) {
                 max = car.findLocation();
             }
         }
         return max;
     }
+
     
     private List<String> findMaxLocationCar(int maxNum) {
         List<String> carsName = new ArrayList<>();
         for(Car car: cars) {
-            if(car.findLocation() == maxNum) {
+            if(car.isSameLocationCar(maxNum)) {
                 carsName.add(car.showName());
             }
         }

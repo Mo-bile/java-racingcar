@@ -1,7 +1,5 @@
 package racinggame.domain.model;
 
-import static racinggame.domain.util.RandomUtil.generateInt;
-
 public class Car {
     
     public static final int INIT_LOCATION = 0;
@@ -33,5 +31,13 @@ public class Car {
     
     public String showName() {
         return this.name;
+    }
+    
+    public boolean isMaxNum(int max) {
+        return this.location > max;
+    }
+    
+    public boolean isSameLocationCar(int max) {
+        return this.location == max;
     }
 }
