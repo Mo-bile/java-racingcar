@@ -13,13 +13,14 @@ class RacingGameTest {
         racingGame.race();
         racingGame.race();
         
-        assertThat(racingGame.isEnd()).isTrue();
+        assertThat(racingGame.isEnd()).isFalse();
     }
     
     @Test
     void 차들을_레이스에_출전시킨_후_결과를_받는다() {
         RacingGame racingGame = new RacingGame("mo,jae");
-        RacingResult result = racingGame.race();
+        racingGame.race();
+        RacingResult result = racingGame.raceResult();
         assertThat(result).isNotNull();
     }
     

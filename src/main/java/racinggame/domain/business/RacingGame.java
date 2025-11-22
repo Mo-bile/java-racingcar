@@ -24,14 +24,17 @@ public class RacingGame {
         this.cars = cars;
     }
     
-    public RacingResult race() {
+    public void race() {
         this.cars.carsRace();
         this.raceCount.decreaseCount();
+    }
+    
+    public RacingResult raceResult() {
         return new RacingResult(this.cars);
     }
     
     public boolean isEnd(){
-        return raceCount.isZeroOrLower();
+        return !raceCount.isZeroOrLower();
     }
     
 }
