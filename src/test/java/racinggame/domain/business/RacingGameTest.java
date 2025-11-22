@@ -13,7 +13,7 @@ class RacingGameTest {
         racingGame.race();
         racingGame.race();
         
-        assertThat(racingGame.isEnd()).isFalse();
+        assertThat(racingGame.isEnd()).isTrue();
     }
     
     @Test

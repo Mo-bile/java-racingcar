@@ -1,7 +1,6 @@
 package racinggame.domain.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ class RaceCountTest {
         RaceCount raceCount = new RaceCount(2);
         raceCount.decreaseCount();
         raceCount.decreaseCount();
-        assertThat(raceCount.isZero()).isTrue();
+        assertThat(raceCount.isZeroOrLower()).isTrue();
     }
     
 

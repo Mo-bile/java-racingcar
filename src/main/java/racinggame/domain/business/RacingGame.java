@@ -1,8 +1,5 @@
 package racinggame.domain.business;
 
-import static racinggame.domain.util.RandomUtil.generateInt;
-
-import racinggame.domain.model.Car;
 import racinggame.domain.model.Cars;
 import racinggame.domain.model.RaceCount;
 import racinggame.domain.model.RacingResult;
@@ -34,7 +31,7 @@ public class RacingGame {
     }
     
     public boolean isEnd(){
-        return raceCount.isZero();
+        return raceCount.isZeroOrLower();
     }
     
 }

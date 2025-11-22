@@ -12,7 +12,7 @@ public class RaceCount {
         raceCount--;
     }
     
-    public boolean isZero() {
-        return this.raceCount == 0;
+    public boolean isZeroOrLower() {
+        return this.raceCount < 1;
     }
 }
