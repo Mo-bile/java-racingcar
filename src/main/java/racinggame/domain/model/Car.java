@@ -3,14 +3,19 @@ package racinggame.domain.model;
 public class Car {
     
     public static final int INIT_LOCATION = 0;
-    private final String name;
+    public static final int MOVE_CONDITION = 3;
+    private final Name name;
     private int location;
     
     public Car(String name) {
-        this(name, INIT_LOCATION);
+        this(new Name(name), INIT_LOCATION);
     }
     
     public Car(String name, int location) {
+        this(new Name(name), location);
+    }
+    
+    public Car(Name name, int location) {
         this.name = name;
         this.location = location;
     }
@@ -22,7 +27,7 @@ public class Car {
     }
     
     private boolean isMoveLocation(int randNum) {
-        return randNum > 3;
+        return randNum > MOVE_CONDITION;
     }
     
     public int findLocation() {
@@ -30,7 +35,7 @@ public class Car {
     }
     
     public String showName() {
-        return this.name;
+        return this.name.getName();
     }
     
     public boolean isMaxNum(int max) {
