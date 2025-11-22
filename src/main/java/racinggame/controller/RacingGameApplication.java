@@ -15,7 +15,8 @@ public class RacingGameApplication {
         
         RacingResult result = null;
         while(racingGame.isEnd()) {
-            result = racingGame.race();
+            racingGame.race();
+            result = racingGame.raceResult();
             ResultView.printAllResult(result);
         }
         ResultView.winnersPrint(result);
