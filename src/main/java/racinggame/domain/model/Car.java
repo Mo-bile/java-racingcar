@@ -5,24 +5,28 @@ public class Car {
     public static final int INIT_LOCATION = 0;
     public static final int MOVE_CONDITION = 3;
     private final Name name;
-    private int location;
+    private final Location location;
     
     public Car(String name) {
         this(new Name(name), INIT_LOCATION);
     }
     
     public Car(String name, int location) {
-        this(new Name(name), location);
+        this(new Name(name), new Location(location));
     }
     
     public Car(Name name, int location) {
+        this(name, new Location(location));
+    }
+    
+    public Car(Name name, Location location) {
         this.name = name;
         this.location = location;
     }
     
     public void race(int randNum) {
         if(isMoveLocation(randNum)) {
-            this.location++;
+            this.location.increaseLocation();
         }
     }
     
@@ -31,7 +35,7 @@ public class Car {
     }
     
     public int findLocation() {
-        return this.location;
+        return this.location.getLocation();
     }
     
     public String showName() {
@@ -39,10 +43,10 @@ public class Car {
     }
     
     public boolean isMaxNum(int max) {
-        return this.location > max;
+        return this.location.isMaxLocation(max);
     }
     
     public boolean isSameLocationCar(int max) {
-        return this.location == max;
+        return this.location.isSameLocation(max);
     }
 }
