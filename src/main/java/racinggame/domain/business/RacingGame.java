@@ -1,8 +1,10 @@
 package racinggame.domain.business;
 
+import java.util.List;
 import racinggame.domain.model.Cars;
 import racinggame.domain.model.RaceCount;
 import racinggame.domain.model.RacingResult;
+import racinggame.domain.model.WinnerCarsName;
 
 public record RacingGame(RaceCount raceCount, Cars cars) {
     
@@ -25,8 +27,12 @@ public record RacingGame(RaceCount raceCount, Cars cars) {
         return new RacingResult(this.cars);
     }
     
+    public WinnerCarsName findWinners() {
+        return this.cars.findWinners();
+    }
+    
     public boolean isEnd() {
-        return !raceCount.isZeroOrLower();
+        return raceCount.isPositive();
     }
     
 }

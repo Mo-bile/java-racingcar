@@ -5,16 +5,10 @@ import static racinggame.domain.util.RandomUtil.generateInt;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cars {
-    
-    List<Car> carList;
+public record Cars(List<Car> carList) {
     
     public Cars(String carsName) {
-        this.carList = createCars(carsName);
-    }
-    
-    public Cars(List<Car> carList) {
-        this.carList = carList;
+        this(createCars(carsName));
     }
     
     public static List<Car> createCars(String carsName) {
@@ -32,7 +26,7 @@ public class Cars {
         }
     }
     
-    public List<String> findWinners() {
+    public WinnerCarsName findWinners() {
         return findMaxLocationCar(findMaxNum());
     }
     
@@ -46,13 +40,13 @@ public class Cars {
         return max;
     }
     
-    private List<String> findMaxLocationCar(int maxNum) {
+    private WinnerCarsName findMaxLocationCar(int maxNum) {
         List<String> carsName = new ArrayList<>();
         for(Car car: carList) {
             if(car.isSameLocationCar(maxNum)) {
                 carsName.add(car.showName());
             }
         }
-        return carsName;
+        return new WinnerCarsName(carsName);
     }
 }

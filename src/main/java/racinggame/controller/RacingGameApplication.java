@@ -13,13 +13,11 @@ public class RacingGameApplication {
         
         RacingGame racingGame = new RacingGame(carNames, raceCount);
         
-        RacingResult result = null;
         while(racingGame.isEnd()) {
             racingGame.race();
-            result = racingGame.raceResult();
-            ResultView.printAllResult(result);
+            ResultView.printAllResult(racingGame.raceResult());
         }
-        ResultView.winnersPrint(result);
+        ResultView.winnersPrint(racingGame.findWinners());
     }
     
 }

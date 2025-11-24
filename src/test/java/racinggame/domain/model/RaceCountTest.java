@@ -11,7 +11,7 @@ class RaceCountTest {
         RaceCount raceCount = new RaceCount(2);
         raceCount.decreaseCount();
         raceCount.decreaseCount();
-        assertThat(raceCount.isZeroOrLower()).isTrue();
+        assertThat(raceCount.isPositive()).isTrue();
     }
     
 

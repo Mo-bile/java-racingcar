@@ -5,6 +5,6 @@ import java.util.List;
 public record RacingResult(Cars cars) {
     
     public List<Car> getCarList() {
-        return cars.carList;
+        return cars.carList();
     }
 }
