@@ -3,7 +3,9 @@ package racinggame.domain.model;
 import static racinggame.domain.util.RandomUtil.generateInt;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public record Cars(List<Car> carList) {
     
@@ -12,12 +14,9 @@ public record Cars(List<Car> carList) {
     }
     
     public static List<Car> createCars(String carsName) {
-        String[] names = carsName.split(",");
-        List<Car> cars = new ArrayList<>();
-        for(String name: names) {
-            cars.add(new Car(name));
-        }
-        return cars;
+        return Arrays.stream(carsName.split(","))
+            .map(Car::new)
+            .toList();
     }
     
     public void carsRace() {
@@ -31,22 +30,18 @@ public record Cars(List<Car> carList) {
     }
     
     private int findMaxNum() {
-        int max = 0;
-        for(Car car: carList) {
-            if(car.isMaxNum(max)) {
-                max = car.findLocation();
-            }
-        }
-        return max;
+        return this.carList.stream()
+            .mapToInt(Car::findLocation)
+            .max()
+            .orElse(0);
     }
     
     private WinnerCarsName findMaxLocationCar(int maxNum) {
-        List<String> carsName = new ArrayList<>();
-        for(Car car: carList) {
-            if(car.isSameLocationCar(maxNum)) {
-                carsName.add(car.showName());
-            }
-        }
-        return new WinnerCarsName(carsName);
+        return new WinnerCarsName(
+            this.carList.stream()
+            .filter(car -> car.isSameLocationCar(maxNum))
+            .map(Car::showName)
+            .toList());
     }
+    
 }

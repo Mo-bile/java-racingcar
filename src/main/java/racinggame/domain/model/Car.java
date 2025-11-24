@@ -42,10 +42,6 @@ public class Car {
         return this.name.getName();
     }
     
-    public boolean isMaxNum(int max) {
-        return this.location.isMaxLocation(max);
-    }
-    
     public boolean isSameLocationCar(int max) {
         return this.location.isSameLocation(max);
     }
