@@ -1,4 +1,4 @@
-package racinggame.util;
+package racinggame.domain.util;
 
 import java.util.Random;
 
@@ -13,5 +13,5 @@ public class RandomUtil {
     private static Random getRandom() {
         return new Random();
     }
-    
+
 }
