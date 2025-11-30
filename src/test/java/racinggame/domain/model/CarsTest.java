@@ -2,7 +2,6 @@ package racinggame.domain.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +27,7 @@ class CarsTest {
         List<Car> cars = List.of(new Car("mo", 3), new Car("jae", 5), new Car("young", 5));
         WinnerCarsName winners = new Cars(cars).findWinners();
         
-        WinnerCarsName expectedWinners = new WinnerCarsName(List.of("jae","young"));
+        WinnerCarsName expectedWinners = new WinnerCarsName(List.of("jae", "young"));
         assertThat(winners).isEqualTo(expectedWinners);
     }
     

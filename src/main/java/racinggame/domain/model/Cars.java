@@ -2,10 +2,8 @@ package racinggame.domain.model;
 
 import static racinggame.domain.util.RandomUtil.generateInt;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 public record Cars(List<Car> carList) {
     
@@ -39,9 +37,9 @@ public record Cars(List<Car> carList) {
     private WinnerCarsName findMaxLocationCar(int maxNum) {
         return new WinnerCarsName(
             this.carList.stream()
-            .filter(car -> car.isSameLocationCar(maxNum))
-            .map(Car::showName)
-            .toList());
+                .filter(car -> car.isSameLocationCar(maxNum))
+                .map(Car::showName)
+                .toList());
     }
     
 }

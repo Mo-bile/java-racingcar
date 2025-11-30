@@ -1,7 +1,6 @@
 package racinggame.domain.model;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,5 +13,5 @@ class NameTest {
         ).isInstanceOf(IllegalArgumentException.class)
             .hasMessage("%s", "자동차 이름은 5자를 초과할 수 없다.");
     }
-
+    
 }

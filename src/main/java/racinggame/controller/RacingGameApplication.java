@@ -1,7 +1,6 @@
 package racinggame.controller;
 
 import racinggame.domain.business.RacingGame;
-import racinggame.domain.model.RacingResult;
 import racinggame.view.InputView;
 import racinggame.view.ResultView;
 

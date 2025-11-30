@@ -14,5 +14,5 @@ class RaceCountTest {
         assertThat(raceCount.isPositive()).isTrue();
     }
     
-
+    
 }

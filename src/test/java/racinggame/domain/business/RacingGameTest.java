@@ -1,6 +1,6 @@
 package racinggame.domain.business;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import racinggame.domain.model.RacingResult;
@@ -9,7 +9,7 @@ class RacingGameTest {
     
     @Test
     void 입력받은_게임횟수에_도달하면_끝인지() {
-        RacingGame racingGame = new RacingGame("mo,jae",2);
+        RacingGame racingGame = new RacingGame("mo,jae", 2);
         racingGame.race();
         racingGame.race();
         
